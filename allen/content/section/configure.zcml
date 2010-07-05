@@ -1,5 +1,6 @@
 <configure
   xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser"
   i18n_domain="allen">
 
   <include package="allen.content.core" />
@@ -15,9 +16,24 @@
 
   <browser:addMenuItem
     title="Allen Section"
-    description="Site Sections"
+    description="Site Section"
     class=".model.Section"
-    for="allen.content.core.interfaces.IContent"
+    for="zope.interface.Interface"
     permission="zope.ManageContent" />
+
+  <browser:page
+    name="edit.html"
+    menu="zmi_views"
+    title="Edit"
+    for=".interfaces.ISection"
+    permission="zope.ManageServices"
+    class=".browser.Edit"
+    />
+
+  <browser:icon
+    name="zmi_icon"
+    for=".interfaces.ISection"
+    file="icon.png"
+  />
 
 </configure>
