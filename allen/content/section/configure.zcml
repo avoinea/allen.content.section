@@ -1,0 +1,23 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  i18n_domain="allen">
+
+  <include package="allen.content.core" />
+
+  <class class=".model.Section">
+    <require
+      interface=".interfaces.ISection"
+      permission="zope.View" />
+    <require
+      set_schema=".interfaces.ISection"
+      permission="zope.ManageContent" />
+  </class>
+
+  <browser:addMenuItem
+    title="Allen Section"
+    description="Site Sections"
+    class=".model.Section"
+    for="allen.content.core.interfaces.IContent"
+    permission="zope.ManageContent" />
+
+</configure>
